@@ -23,7 +23,6 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -34,10 +33,6 @@
             <div id="dismiss">
                 <i class="fas fa-arrow-left"></i>
             </div>
-
-      <!-- Bootstrap:         <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
-            </div> -->
 
             <ul class="list-unstyled components">
                 <p>NYC 311</p>
@@ -63,10 +58,11 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Contact</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <p>Zoe Martiniak</p>
+                            <p>Zoe Martiniak</br>
+                            Urban Data Scientist</p>
                         </li>
                         <li>
-                            <p>Zoe Martiniak</p>
+                            <p>zem232@nyu.edu</p>
                         </li>
                         <li>
                             <p>Zoe Martiniak</p>
@@ -102,24 +98,43 @@
             <div id = 'Contained'>
               <div class="slidecontainer">
                 <input type="range" min="0" max="23" value="6" class="slider" id="myRange">
-                <button id='Go'>
-                Go
-                </button>
-                    <p>Toggle Time: <span id="demo"></span></p>
 
-              </div>
+                  <button id='resetButton'>Reset (Daily Counts)</button>
+                  <span id='dailyInfo'></span>
+                </div>
+                    <p>Move Clock to Toggle Time: <span id="timeOfDay"></span></p>
+
             <div id='mapContainer'>
               <div id='map'></div>
+              <div id='daily-legend' class='legend'>
+              <p>#Complaints</br>(Total Day)</p>
+              <div><span style='background-color: #fff7ec'></span>0</div>
+              <div><span style='background-color: #fee8c8'></span>10</div>
+              <div><span style='background-color: #fdd49e'></span>20</div>
+              <div><span style='background-color: #fdbb84'></span>30</div>
+              <div><span style='background-color: #fc8d59'></span>40</div>
+              <div><span style='background-color: #ef6548'></span>50</div>
+              <div><span style='background-color: #d7301f'></span>60</div>
+              <div><span style='background-color: #990000'></span>70</div>
+              </div>
+              <div id='hourly-legend' class='legend'>
+              <p>#Complaints</br>(Hourly)</p>
+              <div><span style='background-color: #f1eef6'></span>0</div>
+              <div><span style='background-color: #d7b5d8'></span>2</div>
+              <div><span style='background-color: #df65b0'></span>4</div>
+              <div><span style='background-color: #dd1c77'></span>6</div>
+              <div><span style='background-color: #980043'></span>8</div>
+              </div>
             </div>
           </div>
             <div class="line"></div>
             <body>
-            <h2>November 9, 2016, New York City</h2>
+            <h3>November 9, 2016, New York City</h3>
             <p>This was a shocking day for many New Yorkers. But for most, it was just another day in the life. </p>
 
             <div class="line"></div>
 
-            <h2>NYC 311 Data</h2>
+            <h3>NYC 311 Data</h3>
             <p>I thought it would be interesting to gauge the reaction and shock of New York post-2016 election
               by exploring the types of complaints that
             </body>

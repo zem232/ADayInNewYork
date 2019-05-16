@@ -1,5 +1,5 @@
 /*
-    DEMO STYLE
+   STYLE SHEET
 */
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
@@ -8,12 +8,57 @@ body {
     background: #fafafa;
 }
 
+/* ---------------------------------------------------
+    MAP AND LEGEND STYLE
+    Taken inspo from here: https://docs.mapbox.com/help/tutorials/choropleth-studio-gl-pt-2/
+----------------------------------------------------- */
 #mapContainer {
-  height: 650px;
-  width: 650px;
+  height: 600px;
+  width: 60%;
   background: lightgray;
   margin: 10 auto;
   float:right;
+}
+
+.legend {
+background-color: #fff;
+border-radius: 3px;
+top: 10px;
+box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+padding: 10px;
+position: absolute;
+left: 10px;
+z-index: 1;
+}
+
+.legend h4 {
+margin: 0 0 10px;
+}
+
+.legend div span {
+border-radius: 50%;
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
+}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#resetButton {
+  margin-left:100px;
 }
 
 p {
@@ -185,20 +230,7 @@ a.article:hover {
 }
 
 /* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-#content {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-/* ---------------------------------------------------
-    SLIDER STYLE
+    TIME SCALE SLIDER STYLE
     src: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider
 ----------------------------------------------------- */
 

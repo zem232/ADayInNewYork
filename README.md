@@ -11,5 +11,9 @@ Walking through a typical day in the life of a New Yorker, as represented by 311
 * [Python notebook of data cleaning and aggregation](Data_Harvesting_Processing.ipynb)
 * [The final geojson file](trump_Elec_DayOf.geojson)
 
+## References
+* [Sliding Scale, W3schools.com](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider)
+* [Custom scroller and template, Boostrap](https://bootstrapious.com/p/bootstrap-sidebar)
+* [Fonts, Fontawesome](
 
 [Take me to website!](https://zem232.github.io/ADayInNewYork/)
