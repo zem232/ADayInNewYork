@@ -8,12 +8,19 @@ var map = new mapboxgl.Map({
 
 var zoomThreshold = 4;
 
+function filterBy(hour) {
+  //filtering our 2 layers by the year chosen by user through the slider
+  var filters = ['==', 'hour', hour];
+  map.setFilter('311-complaints-DayOf', filters);
+
+
+}
 // Upon initial map load, the choropleth layer will show daily complaint counts
 map.on('load', function() {
   $('#hourly-legend').hide();
 
   // loading the Day Of election data
-  $.getJSON('Data/trump_Elec_DayOf.geojson', function(data) {
+  $.getJSON('Data/trump_Elec_DayAfter.geojson', function(data) {
     data.features.map(function(feature) {
     });
 
@@ -65,6 +72,8 @@ map.on('load', function() {
     slider.oninput = function() {
       $('#daily-legend').hide();
       $('#hourly-legend').show();
+      $('#hourlyCount').show();
+      $('#hourlyDescriptor').show();
       $('#dailyCount').hide();
       $('#dailyDescriptor').hide();
       output.innerHTML = this.value + ':00 (Military Time)';
@@ -76,7 +85,7 @@ map.on('load', function() {
       var hourlyColor = [
         'interpolate',
         ['linear'],
-        ['get', TOD],
+        ['get', 'hourly_counts'],
         0, '#f1eef6',
         2, '#d7b5d8',
         4, '#df65b0',
@@ -84,6 +93,7 @@ map.on('load', function() {
         8, '#980043'];
       map.setPaintProperty('311-complaints-DayOf', 'fill-color', hourlyColor);
 
+      filterBy(TOD);
       var TOD_type = TOD + '_type';
       console.log(TOD_type);
       // e is the event (js knows where cursor is when you move your mouse)
@@ -95,11 +105,10 @@ map.on('load', function() {
         const lot = features[0]
         if (lot) {
         //console.log(lot.properties.address);
-        $('#hourlyCount').text(lot.properties.TOD);
-        $('#hourlyDescriptor').text(lot.properties.TOD_type);
+        $('#hourlyCount').text(lot.properties.hourly_counts);
+        $('#hourlyDescriptor').text(lot.properties.complaint_type);
         }
-        console.log(lot.properties.TOD)
-      })
+      });
 
       var popup = new mapboxgl.Popup({
         closeButton: false,
@@ -115,6 +124,8 @@ $('#resetButton').on('click', function() {
   $('#hourly-legend').hide();
   $('#dailyCount').show();
   $('#dailyDescriptor').show();
+  $('#hourlyCount').hide();
+  $('#hourlyDescriptor').hide();
   var dailyColor = [
     'interpolate',
     ['linear'],

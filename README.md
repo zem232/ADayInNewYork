@@ -8,8 +8,8 @@ Walking through a typical day in the life of a New Yorker, as represented by 311
 	* I then performed a spatial join & aggregated complaints by NTA region.
 	* The total count and descriptor mode for each of the days were calculated
 	* The total count and mode of complaint descriptor for each hour was also calculated.
-* [Python notebook of data cleaning and aggregation](Data_Harvesting_Processing.ipynb)
-* [The final geojson file](trump_Elec_DayOf.geojson)
+* [Python notebook of data cleaning and aggregation](Data_Harvesting/Data_Harvesting_Processing.ipynb)
+* [The final geojson file](Data/trump_Elec_DayAfter.geojson)
 
 ## References
 * [Sliding Scale, W3schools.com](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider)
