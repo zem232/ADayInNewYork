@@ -9,20 +9,18 @@ var map = new mapboxgl.Map({
 var zoomThreshold = 4;
 
 function filterBy(hour) {
-  //filtering our 2 layers by the year chosen by user through the slider
+  //filtering for the hour, as defined by time slider
   var filters = ['==', 'hour', hour];
   map.setFilter('311-complaints-DayOf', filters);
-
-
 }
+
 // Upon initial map load, the choropleth layer will show daily complaint counts
 map.on('load', function() {
   $('#hourly-legend').hide();
 
   // loading the Day Of election data
   $.getJSON('Data/trump_Elec_DayAfter.geojson', function(data) {
-    data.features.map(function(feature) {
-    });
+    data.features.map(function(feature) {});
 
     map.addSource('NTA-311-Complaints', {
       type: 'geojson', // other types of sources include: video, vector tile, & others
@@ -46,20 +44,21 @@ map.on('load', function() {
           40, '#fc8d59',
           50, '#ef6548',
           60, '#d7301f',
-          70, '#990000'],
+          70, '#990000'
+        ],
       }
     });
 
-    map.on('mousemove', function (e){
+    map.on('mousemove', function(e) {
       var features = map.queryRenderedFeatures(e.point, {
         layers: ['311-complaints-DayOf'],
       });
       const lot = features[0]
       if (lot) {
-      //console.log(lot.properties.address);
-      $('#neighborHood').text(lot.properties.ntaname);
-      $('#dailyCount').text(lot.properties.count);
-      $('#dailyDescriptor').text(lot.properties.mode);
+        //console.log(lot.properties.address);
+        $('#neighborHood').text(lot.properties.ntaname);
+        $('#dailyCount').text(lot.properties.count);
+        $('#dailyDescriptor').text(lot.properties.mode);
       }
     });
 
@@ -90,23 +89,25 @@ map.on('load', function() {
         2, '#d7b5d8',
         4, '#df65b0',
         6, '#dd1c77',
-        8, '#980043'];
+        8, '#980043'
+      ];
       map.setPaintProperty('311-complaints-DayOf', 'fill-color', hourlyColor);
 
       filterBy(TOD);
       var TOD_type = TOD + '_type';
       console.log(TOD_type);
       // e is the event (js knows where cursor is when you move your mouse)
-      map.on('mousemove', function (e){
+      map.on('mousemove', function(e) {
         var features = map.queryRenderedFeatures(e.point, {
           layers: ['311-complaints-DayOf'],
         });
         // get the first feature from the array of returned features
         const lot = features[0]
         if (lot) {
-        //console.log(lot.properties.address);
-        $('#hourlyCount').text(lot.properties.hourly_counts);
-        $('#hourlyDescriptor').text(lot.properties.complaint_type);
+          //console.log(lot.properties.address);
+          $('#hourlyCount').text(lot.properties.hourly_counts);
+          $('#hourlyDescriptor').text(lot.properties.complaint_type);
+          console.log(lot.properties.complaint_type);
         }
       });
 
@@ -137,7 +138,8 @@ $('#resetButton').on('click', function() {
     40, '#fc8d59',
     50, '#ef6548',
     60, '#d7301f',
-    70, '#990000'];
+    70, '#990000'
+  ];
   map.setPaintProperty('311-complaints-DayOf', 'fill-color', dailyColor);
 });
 

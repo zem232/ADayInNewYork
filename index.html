@@ -2,174 +2,175 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>NYC 311</title>
-    <head>
-      <meta charset='utf-8' />
-      <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-      <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
-      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
-      <link href='css/styles.css' rel='stylesheet'>
-    </head>
+  <title>NYC 311</title>
 
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='css/styles.css' rel='stylesheet'>
+  </head>
 
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <!-- Bootstrap: https://bootstrapious.com/p/bootstrap-sidebar -->
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div id="dismiss">
-                <i class="fas fa-arrow-left"></i>
-            </div>
+  <div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+      <div id="dismiss">
+        <i class="fas fa-arrow-left"></i>
+      </div>
 
-            <ul class="list-unstyled components">
-                <p>NYC 311</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Data</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Contact</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <p>Zoe Martiniak</br>
-                            Urban Data Scientist</p>
-                        </li>
-                        <li>
-                            <p>zem232@nyu.edu</p>
-                        </li>
-                        <li>
-                            <p>Zoe Martiniak</p>
-                        </li>
-                    </ul>
-                </li>
+      <ul class="list-unstyled components">
+        <p>NYC 311</p>
+        <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">About</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+              <p>This website allows users to visually explore New York City activity
+                the day after the Presidential elections in 2016, as described by the city's 311 complaint footprint.
+                311 complaint data was accessed on NYC Open Data for November 9, 2016. </p>
+            </li>
+            <li>
+              <a href='https://github.com/zem232/ADayInNewYork'>GitHub Repo</a>
+            </li>
+          </ul>
+        </li>
+        <li cliss='active'>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Data</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li>
+              <a href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">311 Data</a>
+              <a href='https://data.cityofnewyork.us/City-Government/Neighborhood-Tabulation-Areas/cpf4-rkhq'>NTA Shapefile</a>
+            </li>
+          </ul>
+        </li>
+        <li class='active'>
+          <a href="#contactSubmenu" data-toggle="collapse" aria-expanded="false">Contact</a>
+          <ul class="collapse list-unstyled" id="contactSubmenu">
+            <li>
+              <p>Zoe Martiniak</br>
+                Urban Data Scientist<br>
+                https://github.com/zem232/ADayInNewYork</p>
+            </li>
+            <li><p>zem232@nyu.edu</p></li>
+
+          </ul>
+        </li>
+      </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-align-left"></i>
+            <span>More Info</span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-align-justify"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+
+              <h2>The Aftermath: A Story Told By 311</h2></br>
             </ul>
-
-        </nav>
-
-        <!-- Page Content  -->
-        <div id="content">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>More Info</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="nav navbar-nav ml-auto">
-
-                          <h2>The Aftermath: A Story Told By 311</h2></br>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div id = 'Contained'>
-              <div class="slidecontainer">
-                <input type="range" min="0" max="23" value="6" class="slider" id="myRange">
-
-                  <button id='resetButton'>Reset (Daily Counts)</button>
-                </div>
-                    <p>Move Clock to Toggle Time: <span id="timeOfDay"></span></p>
-
-    <!-- Map Layer and Legends (Daily and Hourly legends) -->
-            <div id='mapContainer'>
-              <div id='map'></div>
-              <div id='daily-legend' class='legend'>
-              <p>#Complaints</br>(Total Day)</p>
-              <div><span style='background-color: #fff7ec'></span>0</div>
-              <div><span style='background-color: #fee8c8'></span>10</div>
-              <div><span style='background-color: #fdd49e'></span>20</div>
-              <div><span style='background-color: #fdbb84'></span>30</div>
-              <div><span style='background-color: #fc8d59'></span>40</div>
-              <div><span style='background-color: #ef6548'></span>50</div>
-              <div><span style='background-color: #d7301f'></span>60</div>
-              <div><span style='background-color: #990000'></span>70</div>
-              </div>
-              <div id='hourly-legend' class='legend'>
-              <p>#Complaints</br>(Hourly)</p>
-              <div><span style='background-color: #f1eef6'></span>0</div>
-              <div><span style='background-color: #d7b5d8'></span>2</div>
-              <div><span style='background-color: #df65b0'></span>4</div>
-              <div><span style='background-color: #dd1c77'></span>6</div>
-              <div><span style='background-color: #980043'></span>8</div>
-              </div>
-            </div>
           </div>
-            <div class="line"></div>
-
-  <!-- Website Body Content  -->
-
-            <body>
-            <h3>November 9, 2016, New York City</h3>
-            <p>This was a shocking day for many New Yorkers. But for most, it was just another day in the life. </p>
-            <h5>Complaints By Neighborhood</h5>
-            <p>Hover over a neighborhood to find out about its 311 complaint trends for the day. To select an hourly
-              interval, toggle the sliding scale above. To look at total daily
-              counts, click the Reset (Daily Counts) button.
-            <p>Neighborhood:  <span id='neighborHood'></span></br>
-            Complaint Count:  <span id='dailyCount'></span><span id='hourlyCount'></span></br>
-            Most Common Complaint:  <span id='dailyDescriptor'><span id='hourlyDescriptor'></span>
-            </p>
-
-            <div class="line"></div>
-
-            <h3>NYC 311 Data</h3>
-            <p>I thought it would be interesting to gauge the reaction and shock of New York post-2016 election
-              by exploring the types of complaints that
-            </body>
-            </p>
-            <div class="line"></div>
-
         </div>
+      </nav>
+      <div id='Contained'>
+        <div class="slidecontainer">
+          <input type="range" min="0" max="23" value="6" class="slider" id="myRange">
+
+          <button id='resetButton'>Reset (Daily Counts)</button>
+        </div>
+        <p>Move Clock to Toggle Time: <span id="timeOfDay"></span></p>
+
+        <!-- Map Layer and Legends (Daily and Hourly legends) -->
+        <div id='mapContainer'>
+          <div id='map'></div>
+          <div id='daily-legend' class='legend'>
+            <p>#Complaints</br>(Total Day)</p>
+            <div><span style='background-color: #fff7ec'></span>0</div>
+            <div><span style='background-color: #fee8c8'></span>10</div>
+            <div><span style='background-color: #fdd49e'></span>20</div>
+            <div><span style='background-color: #fdbb84'></span>30</div>
+            <div><span style='background-color: #fc8d59'></span>40</div>
+            <div><span style='background-color: #ef6548'></span>50</div>
+            <div><span style='background-color: #d7301f'></span>60</div>
+            <div><span style='background-color: #990000'></span>70</div>
+          </div>
+          <div id='hourly-legend' class='legend'>
+            <p>#Complaints</br>(Hourly)</p>
+            <div><span style='background-color: #f1eef6'></span>0</div>
+            <div><span style='background-color: #d7b5d8'></span>2</div>
+            <div><span style='background-color: #df65b0'></span>4</div>
+            <div><span style='background-color: #dd1c77'></span>6</div>
+            <div><span style='background-color: #980043'></span>8</div>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+
+      <!-- Website Body Content  -->
+
+      <body>
+        <h3>November 9, 2016, New York City</h3>
+        <p>This was a shocking day for many New Yorkers. But for most, it was just another day in the life. </p>
+        <h5>Complaints By Neighborhood</h5>
+        <p>Hover over a neighborhood to find out about its 311 complaint trends for the day. To select an hourly
+          interval, toggle the sliding scale above. To look at total daily
+          counts, click the Reset (Daily Counts) button.
+          <p>Neighborhood: <span id='neighborHood'></span></br>
+            Complaint Count: <span id='dailyCount'></span><span id='hourlyCount'></span></br>
+            Most Common Complaint: <span id='dailyDescriptor'></span><span id='hourlyDescriptor'></span>
+          </p>
+
+          <div class="line"></div>
+
+          <h3>NYC 311 Data</h3>
+          <p>I thought it would be interesting to gauge the reaction and shock of New York post-2016 election
+            by exploring the types of complaints that were made on the day after the election.
+            The next step would be to compare how these complaint trends compared to the day before the election.
+      </body>
+      </p>
+      <div class="line"></div>
+
     </div>
+  </div>
 
-    <div class="overlay"></div>
+  <div class="overlay"></div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.0.min.js"
-      integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-      crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- Script sources -->
-    <script src="js/scripts.js"></script>
+  <!-- jQuery CDN - Slim version (=without AJAX) -->
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+  <!-- Popper.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+  <!-- Script sources -->
+  <script src="js/scripts.js"></script>
 
 </body>
+
 </html>
