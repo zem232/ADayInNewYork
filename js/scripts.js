@@ -45,6 +45,7 @@ map.on('load', function() {
           ],
         }
       });
+      var day_OfEl = document.getElementById('311-complaints-DayOf');
 
       // Created a sliding time scale for the user to select a time of day
       // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider
@@ -56,14 +57,8 @@ map.on('load', function() {
       output.innerHTML = this.value;
       var TOD = this.value
       console.log('Time: ', TOD);
-      if (TOD) {
-        console.log(typeof(TOD));
-      }
-      else {
-        console.log('Nope');
-      };
+      console.log(typeof(TOD));
 
-      var day_OfEl = document.getElementById('311-complaints-DayOf');
       var color = [
           'interpolate',
           ['linear'],
@@ -78,7 +73,7 @@ map.on('load', function() {
           70, '#990000'
       ];
 
-      map.setPaintProperty(day_OfEl.value, 'fill-color', '#fff7ec');
+      map.setPaintProperty(day_OfEl, 'fill-color', color);
 
 
   var popup = new mapboxgl.Popup({
