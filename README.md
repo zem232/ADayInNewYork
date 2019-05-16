@@ -1,5 +1,5 @@
-# November 8, 2016 in New York
-Walking through a typical day in the life of a New Yorker, as represented by 311 data.
+# November 9, 2016 in New York
+Visualizing the day after the 2016 Presidential elections through the lense of a New Yorker, as represented by 311 data.
 
 ## Data
 * [311 Data](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9)
