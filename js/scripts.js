@@ -111,9 +111,26 @@ map.on('load', function() {
         }
       });
 
+      // Creating a popup to display complaint into for nta
       var popup = new mapboxgl.Popup({
         closeButton: false,
         closeOnClick: false
+      });
+
+      //
+      map.on('click', '311-complaints-DayOf', function(e) {
+        // Change the cursor style to a pointer
+        map.getCanvas().style.cursor = 'pointer';
+        // define the features of the area you clicked on the map.
+        var feature = e.features[0]
+
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(e.lngLat)
+          .setHTML(feature.properties.ntaname +
+            '\n Complaints: ' + feature.properties.hourly_counts +
+            '\n Common Type: ' + feature.properties.complaint_type)
+          .addTo(map);
       });
     };
   });
