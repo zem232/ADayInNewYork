@@ -28,7 +28,7 @@
 </head>
 
 <body>
-
+  <!-- Bootstrap: https://bootstrapious.com/p/bootstrap-sidebar -->
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -104,28 +104,36 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                          <h1>The Aftermath</h1></br>
+                      <ul class="nav navbar-nav ml-auto">
+
+                          <h2>The Aftermath: A Story Told By 311</h2></br>
                         </ul>
                     </div>
                 </div>
             </nav>
+            <div id = 'Contained'>
+              <div class="slidecontainer">
+                <input type="range" min="0" max="23" value="6" class="slider" id="myRange">
+                <button id='Go'>
+                Go
+                </button>
+                    <p>Toggle Time: <span id="demo"></span>(Military Time)</p>
+
+              </div>
             <div id='mapContainer'>
-              <div id='map'>
+              <div id='map'></div>
             </div>
-            </div>
+          </div>
+            <div class="line"></div>
+
+            <h2>November 9, 2016, New York City</h2>
+            <p>This was a shocking day for many in New York City.</p>
+
             <div class="line"></div>
 
             <h2>Lorem Ipsum Dolor</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-            <div class="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <div class="slidecontainer">
-              <input type="range" min="0" max="23" value="6" class="slider" id="myRange">
-              <p>Value: <span id="demo"></span></p>
-            </div>
             <div class="line"></div>
 
             <h3>Lorem Ipsum Dolor</h3>

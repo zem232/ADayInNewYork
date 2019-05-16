@@ -9,20 +9,11 @@ var map = new mapboxgl.Map({
 
 var zoomThreshold = 4;
 
-// Created a sliding time scale for the user to select a time of day
-// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-output.innerHTML = this.value;
-};
 
 
 map.on('load', function() {
 
-  $.getJSON('Data/trump_Elec_DayAfter.geojson', function(data) {
+  $.getJSON('Data/trump_Elec_DayOf.geojson', function(data) {
     data.features.map(function(feature) {
       //feature.properties.POPULATION = parseInt(feature.properties.POPULATION);
     });
@@ -33,7 +24,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: '311-complaints',
+        id: '311-complaints-DayOf',
         type: 'fill',
         source: 'NTA-311-Complaints',
         paint: {
@@ -54,13 +45,72 @@ map.on('load', function() {
           ],
         }
       });
+
+      // Created a sliding time scale for the user to select a time of day
+      // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider
+      var slider = document.getElementById("myRange");
+      var output = document.getElementById("demo");
+      output.innerHTML = slider.value;
+
+      slider.oninput = function() {
+      output.innerHTML = this.value;
+      var TOD = this.value
+      console.log('Time: ', TOD);
+      console.log(typeof(TOD));
+
+      map.addLayer({
+          id: '311-TOD',
+          type: 'fill',
+          source: 'NTA-311-Complaints',
+          paint: {
+            'fill-opacity': 0.7,
+            'fill-color': [
+                'interpolate',
+                ['linear'],
+                ['get', TOD],
+                0, '#fff7ec',
+                10, '#fee8c8',
+                20, '#fdd49e',
+                30, '#fdbb84',
+                40, '#fc8d59',
+                50, '#ef6548',
+                60, '#d7301f',
+                70, '#990000'
+            ],
+          }
+        });
+      };
 });
+
+var day_OfEl = document.getElementById('311-complaints-DayOf');
+//var day_AfterEl = document.getElementById('county-legend');
+var tod_day_OfEl = document.getElementById('311-TOD');
+
+map.on('zoom', function() {
+if (map.getZoom() > zoomThreshold) {
+day_OfEl.style.display = 'none';
+tod_day_OfEl.style.display = 'block';
+} else {
+day_OfEl.style.display = 'block';
+tod_day_OfEl.style.display = 'none';
+}
+});
+
+$('#Go').on('click', function() {
+  day_OfEl.hide();
+  $('#boomRoom').hide();
+  $('#boxRoom').hide();
+  $('#back').show();
+  $('.Boxes').hide();
+  $('.Mood').show();
+});//
 
   var popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false
   });
 });
+
 
 
 
