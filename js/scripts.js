@@ -93,21 +93,24 @@ map.on('load', function() {
       ];
       map.setPaintProperty('311-complaints-DayOf', 'fill-color', hourlyColor);
 
+      // filtering the geojson file for each NTA for only the rows where the hour column
+      // matches the hour dictated by UI
       filterBy(TOD);
-      var TOD_type = TOD + '_type';
-      console.log(TOD_type);
+
       // e is the event (js knows where cursor is when you move your mouse)
       map.on('mousemove', function(e) {
         var features = map.queryRenderedFeatures(e.point, {
           layers: ['311-complaints-DayOf'],
         });
         // get the first feature from the array of returned features
-        const lot = features[0]
-        if (lot) {
-          //console.log(lot.properties.address);
-          $('#hourlyCount').text(lot.properties.hourly_counts);
-          $('#hourlyDescriptor').text(lot.properties.complaint_type);
-          console.log(lot.properties.complaint_type);
+        const nta = features[0]
+        if (nta) {
+          // displaying the total counts and the complaint mode for each nta
+          // in the left hand side of the website body
+          $('#hourlyCount').text(nta.properties.hourly_counts);
+          $('#hourlyDescriptor').text(nta.properties.complaint_type);
+          // logging the complaint type
+          console.log(nta.properties.complaint_type);
         }
       });
 
@@ -138,8 +141,8 @@ map.on('load', function() {
 
 // Resetting the choropleth layer to daily complaint counts
 $('#resetButton').on('click', function() {
-  $('#daily-legend').show();
-  $('#hourly-legend').hide();
+  $('#daily-legend').show(); // showing the daily legend
+  $('#hourly-legend').hide(); // hiding the hourly legend
   $('#dailyCount').show();
   $('#dailyDescriptor').show();
   $('#hourlyCount').hide();
@@ -157,19 +160,22 @@ $('#resetButton').on('click', function() {
     60, '#d7301f',
     70, '#990000'
   ];
+  // setting the fill color for the 311 complaint choropleth to change to daily color
   map.setPaintProperty('311-complaints-DayOf', 'fill-color', dailyColor);
 });
 
-// This is the sidebar function to find out more info about this project
+// This is Bootstrap's sidebar to find out more info about this project
 $(document).ready(function() {
   $("#sidebar").mCustomScrollbar({
     theme: "minimal"
   });
-  $('#dismiss, .overlay').on('click', function() {
+  // when the dismiss arrow button is clicked on the sidebar, the sidebar will collapse.
+  $('#sidebarCollapse, .overlay').on('click', function() {
     $('#sidebar').removeClass('active');
     $('.overlay').removeClass('active');
   });
-  $('#sidebarCollapse').on('click', function() {
+  // This is the more info button that will expand the sidebar
+  $('#moreInfo').on('click', function() {
     $('#sidebar').addClass('active');
     $('.overlay').addClass('active');
     $('.collapse.in').toggleClass('in');
