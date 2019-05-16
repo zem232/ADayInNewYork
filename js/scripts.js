@@ -8,12 +8,13 @@ var map = new mapboxgl.Map({
 
 var zoomThreshold = 4;
 
+// Upon initial map load, the choropleth layer will show daily complaint counts
 map.on('load', function() {
   $('#hourly-legend').hide();
 
+  // loading the Day Of election data
   $.getJSON('Data/trump_Elec_DayOf.geojson', function(data) {
     data.features.map(function(feature) {
-      //feature.properties.POPULATION = parseInt(feature.properties.POPULATION);
     });
 
     map.addSource('NTA-311-Complaints', {
@@ -42,6 +43,19 @@ map.on('load', function() {
       }
     });
 
+    map.on('mousemove', function (e){
+      var features = map.queryRenderedFeatures(e.point, {
+        layers: ['311-complaints-DayOf'],
+      });
+      const lot = features[0]
+      if (lot) {
+      //console.log(lot.properties.address);
+      $('#neighborHood').text(lot.properties.ntaname);
+      $('#dailyCount').text(lot.properties.count);
+      $('#dailyDescriptor').text(lot.properties.mode);
+      }
+    });
+
     // Created a sliding time scale for the user to select a time of day
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider
     var slider = document.getElementById("myRange");
@@ -51,6 +65,8 @@ map.on('load', function() {
     slider.oninput = function() {
       $('#daily-legend').hide();
       $('#hourly-legend').show();
+      $('#dailyCount').hide();
+      $('#dailyDescriptor').hide();
       output.innerHTML = this.value + ':00 (Military Time)';
       var TOD = this.value
       console.log('Time: ', TOD); // Checking to see if time scale values are registering
@@ -66,8 +82,24 @@ map.on('load', function() {
         4, '#df65b0',
         6, '#dd1c77',
         8, '#980043'];
-
       map.setPaintProperty('311-complaints-DayOf', 'fill-color', hourlyColor);
+
+      var TOD_type = TOD + '_type';
+      console.log(TOD_type);
+      // e is the event (js knows where cursor is when you move your mouse)
+      map.on('mousemove', function (e){
+        var features = map.queryRenderedFeatures(e.point, {
+          layers: ['311-complaints-DayOf'],
+        });
+        // get the first feature from the array of returned features
+        const lot = features[0]
+        if (lot) {
+        //console.log(lot.properties.address);
+        $('#hourlyCount').text(lot.properties.TOD);
+        $('#hourlyDescriptor').text(lot.properties.TOD_type);
+        }
+        console.log(lot.properties.TOD)
+      })
 
       var popup = new mapboxgl.Popup({
         closeButton: false,
@@ -77,10 +109,12 @@ map.on('load', function() {
   });
 });
 
-// Resetting the colors to total complaint counts for the day
+// Resetting the choropleth layer to daily complaint counts
 $('#resetButton').on('click', function() {
   $('#daily-legend').show();
   $('#hourly-legend').hide();
+  $('#dailyCount').show();
+  $('#dailyDescriptor').show();
   var dailyColor = [
     'interpolate',
     ['linear'],
@@ -93,21 +127,18 @@ $('#resetButton').on('click', function() {
     50, '#ef6548',
     60, '#d7301f',
     70, '#990000'];
-
   map.setPaintProperty('311-complaints-DayOf', 'fill-color', dailyColor);
 });
 
-
+// This is the sidebar function to find out more info about this project
 $(document).ready(function() {
   $("#sidebar").mCustomScrollbar({
     theme: "minimal"
   });
-
   $('#dismiss, .overlay').on('click', function() {
     $('#sidebar').removeClass('active');
     $('.overlay').removeClass('active');
   });
-
   $('#sidebarCollapse').on('click', function() {
     $('#sidebar').addClass('active');
     $('.overlay').addClass('active');
